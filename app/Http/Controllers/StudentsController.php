@@ -24,6 +24,7 @@ class StudentsController extends Controller
      *
      */
     public function registrant(){
+        // Display if student isn't in list it's mean the student is not pass
         return view('student.pendaftar');
     }
     /**

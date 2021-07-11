@@ -16,7 +16,7 @@
 			<div class="buttons">
 				<a href="{{ url('student/create') }}" class="btn">DAFTAR</a>
 				<a href="{{ url('student/print') }}" class="btn">CETAK</a>
-				<a href="" class="btn">DATA PENDAFTAR</a>	
+				<a href="{{ url('student/registrant') }}" class="btn">DATA PENDAFTAR</a>	
 			</div>
 		</div>
 	</div>
