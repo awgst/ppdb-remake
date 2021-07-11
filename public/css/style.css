@@ -23,7 +23,7 @@ label{
 	min-height: 100vh;
 }
 .card{
-	margin: 20px auto;
+	margin: auto auto;
 	background-color: #fff;
 	border-radius: 7px;
 	border: 0px solid transparent;
@@ -170,6 +170,9 @@ label{
 	}
 	.buttons a{
 		margin: 10px 0;
+	}
+	.card{
+		margin: 20px auto;
 	}
 }
 @media only screen and (max-width: 422px){
