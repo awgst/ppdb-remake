@@ -1,0 +1,185 @@
+*{
+	box-sizing: border-box;
+}
+html{
+	margin: 0;
+	padding: 0;
+}
+body{
+	margin: 0;
+	padding: 0;
+}
+label{
+	color: #9999bb;
+}
+.body{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.gradient-bg{
+	background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%);
+	width: auto;
+	min-height: 100vh;
+}
+.card{
+	margin: 20px auto;
+	background-color: #fff;
+	border-radius: 7px;
+	border: 0px solid transparent;
+}
+.card-header{
+	padding: 0 25px;
+	padding-right: 15px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	margin: auto;
+	background-color: #000;
+	color: #fff;
+	border-radius: 7px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border: 1px solid #000;
+}
+.card-header a{
+	padding-top: 35px;
+	padding-left: 20px;
+	font-size: 20px;
+	color: #fff;
+	text-decoration: none;
+}
+.card-content{
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	padding: 52px 85px;
+	padding-bottom: 73px;
+}
+.card-content h2, .card-content h4{
+	margin: 0;
+	padding: 0;
+}
+.card-content h2{
+	margin-top: 10px;
+}
+.card-content p{
+	padding: 0;
+	margin: 30px 0;
+	margin-top: 20px;
+	font-size: 18px;
+}
+.langkah-pendaftaran{
+	display: flex;
+	flex-direction: column;
+	height: auto;
+}
+.btn{
+	color: #fff;
+	background-color: #eb3746;
+	text-decoration: none;
+	font-weight: 700;
+	border-radius: 10px;
+	border:1px solid transparent;
+	padding: 10px;
+	text-align: center;
+}
+.btn-center{
+	margin: auto;
+	display: flex;
+}
+.btn-big{
+	padding: 10px 25px;
+	font-size: 18px;
+}
+.btn-disable{
+	background-color: #bd323d;
+	color: #b7b7b7;
+}
+.form-control{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 20px;
+}
+.form-control h3{
+	min-width: 110px;
+	max-width: 110px;
+	overflow-wrap: anywhere;
+	margin: 0;
+	margin-right: 10px;
+}
+.form{
+	width: 100%;
+	background-color: #e5e5e5;
+	color: #7e5555;
+	border-radius: 7px;
+	border: 1px solid transparent;
+	padding: 15px 0;
+	padding-left: 5px;
+	font-size: 13px;
+}
+.baris{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+.kolom{
+	display: flex;
+	flex-direction: column;
+}
+.fixed-size{
+	resize: none;
+}
+.big{
+	flex-grow: 1;
+	margin-right: 10px;
+}
+.baris-small{
+	width: auto;
+}
+.label-form{
+	margin-left: 5px;
+	font-size: 14px;
+	margin-top: 5px;
+}
+.btn:hover{
+	cursor: pointer;
+}
+.btn-disable:hover{
+	cursor: default;
+}
+/* Responsive */
+@media only screen and (max-width: 805px){
+	h1{
+		font-size: 25px;
+	}
+	.form-control{
+		display: block;
+	}
+	.form-control h3{
+		margin-bottom: 10px;
+		max-width: 100%;
+	}
+	.foto .baris{
+		flex-direction: column;
+	}
+	.buttons{
+		display: flex;
+		flex-direction: column;
+	}
+	.buttons a{
+		margin: 10px 0;
+	}
+}
+@media only screen and (max-width: 422px){
+	h1{
+		max-width: 189px;
+	}
+	.card-content{
+		padding: 10px;
+	}
+
+}
+
+/* End of responsive */
