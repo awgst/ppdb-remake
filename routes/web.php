@@ -17,3 +17,7 @@ Route::get('/', function () {
 Route::get('/login', function(){
 	return view('login');
 });
+Route::get('/student', [StudentController::class, 'index']);
+Route::get('/student/create', [StudentController::class, 'create']);
+Route::post('/student', [StudentController::class, 'store']);
+Route::get('/student/print', [StudentController::class, 'printView']);
