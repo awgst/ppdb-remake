@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Fascades\Validator;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\StudentController;
 
 class StudentsController extends Controller
@@ -59,7 +60,9 @@ class StudentsController extends Controller
     public function create()
     {
         // Go to registration form
-        return view('student.daftar');
+        // Get last id registrant
+        $last = DB::table('students')->orderBy('id', 'desc')->first();
+        return view('student.daftar', compact('last'));
     }
 
     /**
