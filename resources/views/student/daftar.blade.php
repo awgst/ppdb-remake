@@ -15,29 +15,51 @@
 			</div>
 			<div class="form-control">
 				<h3>Nama Lengkap</h3>
-				<input type="text" name="name" class="form @error('name') is-invalid @enderror" autofocus  placeholder="Masukkan nama lengkap">
-				@error('name')
-					<label>{{ $message }}</label>
-				@enderror
+				<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+					<input type="text" name="name" class="form @error('name') is-invalid @enderror" autofocus  placeholder="Masukkan nama lengkap">
+					@error('name')
+						<label style="color: red">{{ $message }}</label>
+					@enderror
+				</div>
 			</div>
 			<div class="form-control">
 				<h3>NISN</h3>
-				<input type="text" name="nisn" class="form" placeholder="Masukkan NISN">
+				<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+					<input type="text" name="nisn" class="form @error('nisn') is-invalid @enderror" placeholder="Masukkan NISN">
+					@error('nisn')
+						<label style="color: red">{{ $message }}</label>
+					@enderror
+				</div>
 			</div>
 			<div class="form-control">
 				<h3>Sekolah Asal</h3>
-				<input type="text" name="asal_sekolah" class="form" placeholder="Masukkan asal sekolah">
+				<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+					<input type="text" name="asal_sekolah" class="form @error('asal_sekolah') is-invalid @enderror" placeholder="Masukkan asal sekolah">
+					@error('asal_sekolah')
+						<label style="color: red">{{ $message }}</label>
+					@enderror
+				</div>
 			</div>
 			<div class="form-control">
 				<h3>Tempat / Tgl Lahir</h3>
 				<div class="baris">
-					<div class="kolom big">
-						<input type="text" name="tempat_lahir" class="form" placeholder="Masukkan tempat lahir">
-						<label class="label-form">Tempat Lahir</label>
+					<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+						<div class="kolom big">
+							<input type="text" name="tempat_lahir" class="form @error('tempat_lahir') is-invalid @enderror" placeholder="Masukkan tempat lahir">
+							<label class="label-form">Tempat Lahir</label>
+						</div>
+						@error('tempat_lahir')
+							<label style="color: red">{{ $message }}</label>
+						@enderror
 					</div>
-					<div class="kolom">
-						<input type="date" name="tgl_lahir" class="form">
-						<label class="label-form">Tanggal Lahir</label>
+					<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+						<div class="kolom">
+							<input type="date" name="tgl_lahir" class="form @error('tgl_lahir') is-invalid @enderror">
+							<label class="label-form">Tanggal Lahir</label>
+						</div>
+						@error('tgl_lahir')
+							<label style="color: red">{{ $message }}</label>
+						@enderror
 					</div>
 				</div>
 				
@@ -51,34 +73,59 @@
 			</div>
 			<div class="form-control">
 				<h3>Agama</h3>
-				<select class="form" name="agama">
-					<option disabled selected>Pilih</option>
-					<option value="Islam">Islam</option>
-					<option value="Kristen">Kristen</option>
-					<option value="Katholik">Katholik</option>
-					<option value="Hindu">Hindu</option>
-					<option value="Budha">Budha</option>
-					<option value="Kong Hu Cu">Kong Hu Cu</option>
-				</select>
+				<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+					<select class="form @error('agama') is-invalid @enderror" name="agama">
+						<option disabled selected>Pilih</option>
+						<option value="Islam">Islam</option>
+						<option value="Kristen">Kristen</option>
+						<option value="Katholik">Katholik</option>
+						<option value="Hindu">Hindu</option>
+						<option value="Budha">Budha</option>
+						<option value="Kong Hu Cu">Kong Hu Cu</option>
+					</select>
+					@error('agama')
+						<label style="color: red">{{ $message }}</label>
+					@enderror
+				</div>
 			</div>
 			<div class="form-control">
 				<h3>Alamat</h3>
-				<textarea class="form fixed-size" name="alamat" placeholder="Masukkan alamat lengkap"></textarea>
+				<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+					<textarea class="form fixed-size @error('alamat') is-invalid @enderror" name="alamat" placeholder="Masukkan alamat lengkap"></textarea>
+					@error('alamat')
+						<label style="color: red">{{ $message }}</label>
+					@enderror
+				</div>
 			</div>
 			<div class="form-control">
 				<h3>Nama Orang Tua / Wali</h3>
-				<input type="text" name="nama_wali" class="form" placeholder="Masukkan nama orang tua / wali">
+				<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+					<input type="text" name="nama_wali" class="form @error('nama_wali') is-invalid @enderror" placeholder="Masukkan nama orang tua / wali">
+					@error('nama_wali')
+						<label style="color: red">{{ $message }}</label>
+					@enderror
+				</div>
 			</div>
 			<div class="form-control">
 				<h3>Alamat Orang Tua / Wali</h3>
-				<textarea class="form fixed-size" name="alamat_wali" placeholder="Masukkan alamat orang tua / wali"></textarea>
+				<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+					<textarea class="form fixed-size @error('alamat_wali') is-invalid @enderror" name="alamat_wali" placeholder="Masukkan alamat orang tua / wali"></textarea>
+					@error('alamat_wali')
+						<label style="color: red">{{ $message }}</label>
+					@enderror
+				</div>
 			</div>
 			<div class="form-control">
 				<h3>Jarak rumah dari SMP Negeri 1 Gabus</h3>
 				<div class="baris">
-					<div class="kolom big">
-						<input type="number" class="form" name="jarak" step="0.01" placeholder="Masukkan jarak rumah dengan SMP N 1 Gabus">
-						<label class="label-form">Gunakan . untuk menulis koma</label>
+					<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+						<div class="kolom big">
+							<input type="number" class="form @error('jarak') is-invalid @enderror" name="jarak" step="0.1" placeholder="Masukkan jarak rumah dengan SMP N 1 Gabus">
+							<label class="label-form">Gunakan . untuk menulis koma</label>
+						</div>
+						@error('jarak')
+							<label style="color: red">{{ $message }}</label>
+						@enderror
 					</div>
 					<div class="kolom">
 						<input type="text" disabled class="form" value="KM" style="background-color: transparent;">
@@ -88,9 +135,14 @@
 			<div class="form-control foto">
 				<h3>Upload Foto</h3>
 				<div class="baris">
-					<div class="kolom big">
-						<input id="file" type="file" name="file" accept="image/*">
-						<label class="label-form">Upload Foto. Max 2 MB</label>
+					<div class="input-form" style="width: 100%;display: flex; flex-direction: column;">
+						<div class="kolom big @error('path') is-invalid @enderror">
+							<input id="file" type="file" name="path" accept="image/*">
+							<label class="label-form">Upload Foto. Max 2 MB</label>
+						</div>
+						@error('path')
+							<label style="color: red">{{ $message }}</label>
+						@enderror
 					</div>
 					<div class="kolom">
 						<img id="img-box" style="max-width: 125px; height: 100%;">

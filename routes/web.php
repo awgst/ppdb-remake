@@ -22,3 +22,5 @@ Route::get('/student/create', [StudentsController::class, 'create']);
 Route::post('/student', [StudentsController::class, 'store']);
 Route::get('/student/print', [StudentsController::class, 'printView']);
 Route::get('/student/registrant', [StudentsController::class, 'registrant']);
+// Load Ajax
+Route::get('/student/loadRegistrant', [StudentsController::class, 'loadRegistrant']);

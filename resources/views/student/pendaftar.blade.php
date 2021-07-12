@@ -8,8 +8,8 @@
         <div class="card-content">
             <h2 style="text-align: center;">Selamat datang di PPDB Online SMP N 1 Gabus</h2>
             <p>Silahkan cari nama kamu dalam daftar berikut untuk mengetahui apakah kamu diterima atau tidak.</p>
-            <div class="container">
-                <table id="dataTable" class="table table-responsive" width="100%" cellspacing="0">
+            <div class="container table-responsive">
+                <table id="dataTable" class="table table-hover" width="100%" cellspacing="0">
                     <thead>
                         <th>No</th>
                         <th>Nama</th>
@@ -17,15 +17,7 @@
                         <th>Jenis Kelamin</th>
                         <th>Jarak (KM)</th>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Awang Suria Trisakti</td>
-                            <td>123160046</td>
-                            <td>Laki-laki</td>
-                            <td>3.5</td>
-                        </tr>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
@@ -43,6 +35,12 @@
             .dataTables_filter, .dataTables_paginate{
                 display: block;
             }
+            .card{
+                max-width: 450px;
+            }
+            .card-content{
+                width: 100%;
+            }
         }
     </style>
 @endsection
@@ -52,6 +50,26 @@
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
+            setInterval(function (){
+                $.ajax({
+                type: "GET",
+                url: "/student/loadRegistrant",
+                dataType: "json",
+                success: function (response) {
+                    $.each(response, function (index, item) { 
+                         $(".odd").remove();
+                         $("tbody").html('<tr>\
+                            <td>'+(index+1)+'</td>\
+                            <td style="min-width: 200px;">'+item.name+'</td>\
+                            <td style="min-width: 150px;">'+item.nisn+'</td>\
+                            <td>'+item.jenis_kelamin+'</td>\
+                            <td>'+item.jarak+'</td>\
+                        </tr>');
+                    });
+                }
+            });
+            }, 1000);
+            
         });
     </script>
 @endsection

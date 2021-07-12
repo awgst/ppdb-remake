@@ -149,6 +149,9 @@ label{
 .btn-disable:hover{
 	cursor: default;
 }
+.is-invalid{
+	border: 1px solid red;
+}
 /* Responsive */
 @media only screen and (max-width: 805px){
 	h1{

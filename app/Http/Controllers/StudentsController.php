@@ -20,6 +20,15 @@ class StudentsController extends Controller
         return view('student.index');
     }
     /**
+     * Load data form database
+     *
+     */
+    public function loadRegistrant(){
+        // Pass data from database to ajax
+        $student = Student::all();
+        return response()->json($student, 200);
+    }
+    /**
      * Display all registrant for student
      *
      */
@@ -64,23 +73,23 @@ class StudentsController extends Controller
         // Store data from registration form into database
         $request->validate([
             'name' => 'required',
-            'nisn' => 'required|max:10|unique:students',
+            'nisn' => 'required|size:10|unique:students',
             'asal_sekolah' => 'required',
             'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
+            'tgl_lahir' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
             'nama_wali' => 'required',
             'alamat_wali' => 'required',
             'jarak' => 'required',
-            'file' => 'required|max:2048',
+            'path' => 'required|max:2048',
         ], $this->messages());
-        $name = $request->file('file')->getClientOriginalName();
-        $path = $request->file('file')->storePubliclyAs('foto', $name,'public');
+        $name = $request->file('path')->getClientOriginalName();
+        $path = $request->file('path')->storePubliclyAs('foto', $name,'public');
         $student = new Student($request->all());
         $student->path = $path;
-        $student->save();    
+        $student->save();
         return redirect('student/create')->with('status', 'Berhasil');
     }
     /**
@@ -139,6 +148,7 @@ class StudentsController extends Controller
             'required' => 'Harap isi bidang ini',
             'unique' => ':attribute telah terdaftar',
             'max' => 'Ukuran gambar melebihi 2MB',
+            'size' => 'jumlah :attribute harus 10 karakter'
         ];
     }
 }

@@ -10,7 +10,7 @@
 		<h2>Selamat datang di PPDB Online SMP N 1 Gabus</h2>
 		<h4>Langkah untuk mendaftar</h4>
 		<div class="langkah-pendaftaran">
-			<p>1. Siapkan foto berukuran 3x4, ukuran maks 3MB<br>
+			<p>1. Siapkan foto berukuran 3x4, ukuran maks 2MB<br>
 			2. Daftarkan diri anda, dapat melalui link <a href="{{ url('student/create') }}">ini</a><br>
 			3. Cetak dan simpan bukti pendaftaran</p>
 			<div class="buttons">

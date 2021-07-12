@@ -7,5 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     // Mass Assignment
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'name', 
+        'nisn', 
+        'asal_sekolah', 
+        'tempat_lahir', 
+        'tgl_lahir',
+        'jenis_kelamin',
+        'agama',
+        'alamat',
+        'nama_wali',
+        'alamat_wali',
+        'jarak',
+        'path',
+    ];
 }
