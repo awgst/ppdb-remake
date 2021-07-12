@@ -161,7 +161,10 @@
 				</div>
 				
 			</div>
-			<button id="button" class="btn btn-center btn-big btn-disable" disabled>Daftar</button>
+			<div class="reg-buttons" style="display: flex;">
+				<button id="button" class="btn btn-center btn-big btn-disable" disabled>Daftar</button>
+				<a href="{{ url('/') }}" class="btn btn-center btn-big">Kembali</a>
+			</div>
 		</form>
 	</div>
 </div>
