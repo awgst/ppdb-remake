@@ -20,7 +20,9 @@ Route::get('/login', function(){
 Route::get('/student', [StudentsController::class, 'index']);
 Route::get('/student/create', [StudentsController::class, 'create']);
 Route::post('/student', [StudentsController::class, 'store']);
-Route::get('/student/print', [StudentsController::class, 'printView']);
+Route::get('/student/printView', [StudentsController::class, 'printView']);
 Route::get('/student/registrant', [StudentsController::class, 'registrant']);
 // Load Ajax
 Route::get('/student/loadRegistrant', [StudentsController::class, 'loadRegistrant']);
+Route::post('/student/findStudent', [StudentsController::class, 'findStudent']);
+

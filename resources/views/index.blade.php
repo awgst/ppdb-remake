@@ -15,7 +15,7 @@
 			3. Cetak dan simpan bukti pendaftaran</p>
 			<div class="buttons">
 				<a href="{{ url('student/create') }}" class="btn">DAFTAR</a>
-				<a href="{{ url('student/print') }}" class="btn">CETAK</a>
+				<a href="{{ url('student/printView') }}" class="btn">CETAK</a>
 				<a href="{{ url('student/registrant') }}" class="btn">DATA PENDAFTAR</a>	
 			</div>
 		</div>

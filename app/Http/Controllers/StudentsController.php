@@ -45,12 +45,12 @@ class StudentsController extends Controller
         return view('student.cetak');
     }
     /**
-     * Print proof of registration
+     * Load student where nisn
      *
      */
-    public function print(Student $student){
-
-
+    public function findStudent(Request $request){
+        $data = DB::table('students')->where('nisn', '=', $request->nisn)->get();
+        return response()->json($data, 200);
     }
     /**
      * Show the form for creating a new resource.

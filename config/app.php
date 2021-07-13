@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Add fpdf-laravel from github.com/crabbly
+        Crabbly\Fpdf\FpdfServiceProvider::class,
+
     ],
 
     /*
