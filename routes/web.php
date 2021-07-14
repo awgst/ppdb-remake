@@ -14,6 +14,8 @@ use App\Http\Controllers\StudentsController;
 Route::get('/', function () {
     return view('index');
 });
+
+//Student Routes
 Route::get('/student', [StudentsController::class, 'index']);
 Route::get('/student/create', [StudentsController::class, 'create']);
 Route::post('/student', [StudentsController::class, 'store']);
@@ -24,6 +26,7 @@ Route::get('/student/print/{student}', [StudentsController::class, 'print']);
 Route::get('/student/loadRegistrant', [StudentsController::class, 'loadRegistrant']);
 Route::post('/student/findStudent', [StudentsController::class, 'findStudent']);
 
+// Auth Routes
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
