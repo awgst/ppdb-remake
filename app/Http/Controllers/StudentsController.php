@@ -6,6 +6,7 @@ use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Fascades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\StudentController;
 
 class StudentsController extends Controller
@@ -51,6 +52,64 @@ class StudentsController extends Controller
     public function findStudent(Request $request){
         $data = DB::table('students')->where('nisn', '=', $request->nisn)->get();
         return response()->json($data, 200);
+    }
+    /**
+     * Print using fpdf
+     * 
+     */
+    public function print(Student $student){
+        //create pdf document
+        $pdf = app('Fpdf');
+        $pdf->AddPage();
+        
+        $pdf->Image(public_path('images/header.png') ,10,10);
+        // setting used font
+        $pdf->SetY(60);
+        $pdf->SetFont('Arial','B',16);
+        // Cell formatting
+        // Cell(width, height, content, border(0,1), line_break(0,1), text_align)
+        $pdf->Cell(190,6,'BUKTI PENDAFTARAN PPDB',0,0,'C');
+
+        // Add line spacing
+        $pdf->SetY(80);
+        $pdf->SetX(35);
+        $pdf->SetFont('Arial','',11);
+        $pdf->Cell(35,10,'Nomor Registrasi');
+        $pdf->Cell(10,10,':',0,0,'R');
+        $pdf->Cell(105,10,'PDB/20/1',1,1,'L');
+        $pdf->SetX(35);
+        $pdf->Cell(35,10,'NAMA');
+        $pdf->Cell(10,10,':',0,0,'R');
+        $pdf->Cell(100,10,'Awang Suria Trisakti',0,1,'L');
+        $pdf->SetX(35);
+        $pdf->Cell(35,10,'NISN');
+        $pdf->Cell(10,10,':',0,0,'R');
+        $pdf->Cell(100,10,'1234567890',0,1,'L');
+        $pdf->SetX(35);
+        $pdf->Cell(35,10,'Sekolah Asal');
+        $pdf->Cell(10,10,':',0,0,'R');
+        $pdf->Cell(100,10,'SD N 1 Tlogotirto',0,1,'L');
+        $pdf->SetX(35);
+        $pdf->Cell(35,10,'Alamat');
+        $pdf->Cell(10,10,':',0,0,'R');
+        $pdf->MultiCell(100,10,'Jembar',0,'L',0);
+        $pdf->SetY(205);
+
+        $pdf->SetFont('Arial','',11);
+        $path = public_path('foto/1584959903212.jpg');
+        $pdf->Image($path,40,150,35,45);
+
+        $pdf->Cell(95,10,'Calon Peserta',0,0,'C');
+        $pdf->Cell(95,10,'Panitia',0,1,'C');
+        $pdf->Cell(95,20,'',0,0,'C');
+        $pdf->Cell(95,20,'',0,1,'C');
+        $pdf->Cell(95,10,'Awang Suria Trisakti',0,0,'C');
+        $pdf->Cell(95,10,'..................',0,1,'C');
+
+        // Print file
+        $pdf->Output();
+        exit();
+        // return response()->download($result, 'test.pdf');
     }
     /**
      * Show the form for creating a new resource.

@@ -56,8 +56,8 @@
                 url: "/student/loadRegistrant",
                 dataType: "json",
                 success: function (response) {
+                    $(".odd").remove();
                     $.each(response, function (index, item) { 
-                         $(".odd").remove();
                          $("tbody").html('<tr>\
                             <td>'+(index+1)+'</td>\
                             <td style="min-width: 200px;">'+item.name+'</td>\

@@ -40,11 +40,16 @@
 					success: function (response) {
 						$('#loading').css('display', 'none');
 						if(response.length){
+							console.log(response[0]);
 							$('.result').html('');
 							$('.result').append('<p style="border-color: #d6e9c6; background-color: #dff0d8; color: #3c763d">Data ditemukan</p>');
 							$('.result').append("Nama : "+response[0].name);
 							$('.result').append("<br>NISN : "+response[0].nisn);
-							$('.result').append("<br>ALAMAT : "+response[0].alamat);
+							$('.result').append("<br>Sekolah asal : "+response[0].asal_sekolah);
+							$('.result').append("<br>Alamat : "+response[0].alamat+"<br><br>");
+							$('.result').append('<a id="print">Cetak</a>');
+							$('#print').addClass('btn btn-big');
+							$('#print').attr('href', '{{ url("/student/print") }}/'+response[0].id);
 							$('.result').html($('.result').html());
 						}
 						else{
