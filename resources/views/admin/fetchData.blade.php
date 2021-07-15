@@ -5,8 +5,8 @@
         Data Statistik
     </h1>
     <div class="wraper">
-        <div class="table-responsive">
-            <table class="table table-hover">
+        <div class="container table-responsive">
+            <table id="dataTable" class="table table-hover">
                 <thead>
                     <th>No</th>
                     <th>No Registrasi</th>
@@ -54,4 +54,19 @@
         </div>
     </div>
 </div>
+@endsection
+@section('custom-style')
+    <style>
+        .dataTables_filter, .dataTables_paginate{
+            display: flex;
+            flex-direction: row-reverse;
+        }
+    </style>
+@endsection
+@section('custom-script')
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
 @endsection
