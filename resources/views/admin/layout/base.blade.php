@@ -16,20 +16,25 @@
     <link rel="stylesheet" href="{{ asset('css/admin-styles.css') }}">
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <title>Admin Panel Museum Sandi</title>
+    <title>Admin PPDB Online SMP N 1 Gabus</title>
 </head>
 <body>
     <header>
         <div class="logo-header">
-            <h2>Museum Sandi</h2>
+            <h2>PPDB 2020</h2>
         </div>
     </header>
     <main>
         <nav>
             <ul>
-                <li><a href="{{ url('/admin') }}" class="{{ request()->is('admin') ? 'active' : ''}}"><i class="fa fa-dashboard"></i> Statistik</a></li>
-                <li><a href="{{ url('admin/daftar') }}" class="{{ request()->is('admin/daftar') ? 'active' : ''}}"><i class="fa fa-table"></i> Daftar Pengunjung</a></li>
-                <li><a href=""><i class="fa fa-sign-out"></i> Logout</a></li>
+                <li><a href="{{ url('/home') }}" class="{{ request()->is('home') ? 'active' : ''}}"><i class="fa fa-dashboard"></i> Statistik</a></li>
+                <li><a href="{{ route('fetchData') }}" class="{{ request()->is('admin/daftar') ? 'active' : ''}}"><i class="fa fa-table"></i> Data Pendaftar</a></li>
+                <li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button><i class="fa fa-sign-out"></i> Logout</button>
+                    </form>
+                </li>
         </nav>
             </ul>
         @yield('Main-Content')

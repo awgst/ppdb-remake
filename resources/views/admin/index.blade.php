@@ -47,20 +47,7 @@
 @section('custom-script')
     <script>
         $(document).ready(function(){
-            setInterval(refresh, 1000);
-            function refresh() { 
-                $.ajax({
-                    type: "GET",
-                    url: "summary",
-                    dataType: "json",
-                    success: function (response) {
-                        $('#today').html(response.today);
-                        $('#this_month').html(response.month);
-                        $('#touris').html(response.turis);
-                        $('#total').html(response.total);
-                    }
-                });
-            }
+            
         });
     </script>
 @endsection

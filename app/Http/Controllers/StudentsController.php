@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Fascades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +13,22 @@ use App\Http\Controllers\StudentController;
 
 class StudentsController extends Controller
 {
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
     /**
      * Display a listing of the resource.
      *

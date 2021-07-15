@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    font-family: 'Varela', sans-serif;	
+}
+/* Header */
+header{
+    margin: 0;
+    width: 100%;
+}
+.logo-header{
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 1px 10px rgba(189, 189, 189, 0.89);
+}
+.logo-header h2{
+    background-color: #e76555;
+    width: fit-content;
+    padding: 15px 100px 15px 20px;
+    color: #fff;
+    box-shadow: 0 1px 10px rgba(189, 189, 189, 0.808);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: normal;
+}
+nav ul{
+    padding-inline-start: 0;
+}
+nav ul li{
+    list-style: none;
+    max-width: 100%;
+    border-bottom: 0.1px solid rgba(211, 211, 211, 0.575);
+    display: block;
+}
+/* End of Header */
+/* Body */
+body{
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    background-color: #ededed;
+}
+/* End of Body */
+/* Main */
+main{
+    display: flex;
+    position: relative;
+    top: 0;
+    width: 100%;
+    min-height: 93.5vh;
+}
+.main-content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 40px;
+}
+.wraper{
+    display: flex;
+    justify-content: space-between;
+}
+.wraper .stats{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 25px 12px;
+    margin: 0 20px;
+    width: 25%;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgb(0, 0, 0, 10%);
+}
+.wraper .stats .number{
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.wraper .stats .number h3{
+    font-size: 25px;
+}
+.wraper .stats i{
+    padding: 20px 20px;
+    background-color: #e76555;
+    color: #fff;
+    font-size: 22px;
+}
+h1.page-header{
+    font-size: 36px;
+    padding: 20px 0;
+    padding-left: 18px;
+}
+nav{
+    background-color: #3e3e3e;
+    min-width: 253.28px;
+    max-width: 253.28px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 17px 70.5px 15px 20px;
+}
+nav ul li a.active{
+    background-color: #fff;
+    color: #e76555;
+}
+nav ul li a i{
+    padding-right: 15px;
+}
+nav ul li a:hover{
+    background-color: #635e5e8c;
+    color: #e76555;
+}
+nav ul li a.active:hover{
+    background-color: #fff;
+    color: #e76555;
+}
+.btn{
+    color:rgb(46, 46, 46);
+}
+.img-prev{
+    width: 80px;
+    height: 100px;
+}
+/* End of Main */

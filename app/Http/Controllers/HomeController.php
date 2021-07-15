@@ -25,4 +25,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     * Show all data from students
+     */
+    public function fetchData(){
+        return view('admin.fetchData');
+    }
 }
