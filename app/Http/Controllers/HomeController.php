@@ -43,4 +43,19 @@ class HomeController extends Controller
         $data = Student::all();
         return response()->json($data, 200);
     }
+    /**
+     * Get summary of all data
+     */
+    public function loadStats(){
+        $total = count(Student::all());
+        $boy = count(DB::table('students')->where('jenis_kelamin','=','Laki-laki')->get());
+        $girl = count(DB::table('students')->where('jenis_kelamin','=','Perempuan')->get());
+        $data = collect([
+            'total'=>$total,
+            'boy'=>$boy,
+            'girl'=>$girl,
+        ]);
+        $data->toJson();
+        return $data;
+    }
 }

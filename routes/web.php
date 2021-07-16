@@ -33,3 +33,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/fetchData', 'HomeController@fetchData')->name('fetchData');
 // Load ajax
 Route::get('/loadData', 'HomeController@loadData');
+Route::get('/loadStats', 'HomeController@loadStats');

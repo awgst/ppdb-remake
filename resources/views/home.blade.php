@@ -62,6 +62,19 @@
 @endsection
 @section('custom-script')
     <script>
-       
+       $(document).ready(function () {
+           setInterval(function(){
+            $.ajax({
+                type: "GEt",
+                url: "/loadStats",
+                dataType: "json",
+                success: function (response) {
+                    $('#total').html(response.total);
+                    $('#laki-laki').html(response.boy);
+                    $('#perempuan').html(response.girl);
+                }
+            });
+           },1000);
+       });
     </script>
 @endsection
