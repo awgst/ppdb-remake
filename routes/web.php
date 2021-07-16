@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,12 +12,8 @@ use App\Http\Controllers\StudentsController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 //Student Routes
-Route::get('/student', [StudentsController::class, 'index']);
+Route::get('/', [StudentsController::class, 'index']);
 Route::get('/student/create', [StudentsController::class, 'create']);
 Route::post('/student', [StudentsController::class, 'store']);
 Route::get('/student/printView', [StudentsController::class, 'printView']);

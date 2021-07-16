@@ -37,7 +37,7 @@ class StudentsController extends Controller
     public function index()
     {
         // Displaying registered student for admin
-        return view('student.index');
+        return view('index');
     }
     /**
      * Load data form database
