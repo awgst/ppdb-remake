@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\StudentController;
 
 class HomeController extends Controller
 {
@@ -31,5 +34,13 @@ class HomeController extends Controller
      */
     public function fetchData(){
         return view('admin.fetchData');
+    }
+
+    /**
+     * Get all data
+     */
+    public function loadData(){
+        $data = Student::all();
+        return response()->json($data, 200);
     }
 }

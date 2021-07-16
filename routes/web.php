@@ -31,3 +31,5 @@ Auth::routes();
 // Admin page routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/fetchData', 'HomeController@fetchData')->name('fetchData');
+// Load ajax
+Route::get('/loadData', 'HomeController@loadData');

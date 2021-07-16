@@ -17,7 +17,7 @@
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Admin PPDB Online SMP N 1 Gabus</title>
-    @yield('custom-style');
+    @yield('custom-style')
 </head>
 <body>
     <header>
@@ -29,7 +29,7 @@
         <nav>
             <ul>
                 <li><a href="{{ url('/home') }}" class="{{ request()->is('home') ? 'active' : ''}}"><i class="fa fa-dashboard"></i> Statistik</a></li>
-                <li><a href="{{ route('fetchData') }}" class="{{ request()->is('admin/daftar') ? 'active' : ''}}"><i class="fa fa-table"></i> Data Pendaftar</a></li>
+                <li><a href="{{ route('fetchData') }}" class="{{ request()->is('fetchData') ? 'active' : ''}}"><i class="fa fa-table"></i> Data Pendaftar</a></li>
                 <li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -48,6 +48,6 @@
 	<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <!-- Jacascript -->
     <script src="{{ asset('js/script.js') }}"></script>
-    @yield('custom-script');
+    @yield('custom-script')
 </body>
 </html>
