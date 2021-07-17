@@ -45,7 +45,9 @@ class StudentsController extends Controller
      */
     public function loadRegistrant(){
         // Pass data from database to ajax
-        $student = Student::all();
+        // Order by jarak with limit 200 (max quota)
+        // If registrant isn't in 200 showed data then the registrant didn't accepted as student
+        $student = Student::orderBy('jarak', 'asc')->limit(200)->get();
         return response()->json($student, 200);
     }
     /**
