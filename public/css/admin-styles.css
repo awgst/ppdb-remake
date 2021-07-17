@@ -14,6 +14,8 @@ header{
     background-color: #fff;
     width: 100%;
     box-shadow: 0 1px 10px rgba(189, 189, 189, 0.89);
+    display: flex;
+    justify-content: space-between;
 }
 .logo-header h2{
     background-color: #e76555;
@@ -24,6 +26,13 @@ header{
     font-size: 24px;
     font-weight: bold;
     line-height: normal;
+}
+.logout-btn{
+    margin: 15px;
+    border-radius: 7px;
+    border-color: transparent;
+    background-color: #e76555;
+    color: #fff;
 }
 nav ul{
     padding-inline-start: 0;

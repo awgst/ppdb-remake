@@ -23,6 +23,10 @@
     <header>
         <div class="logo-header">
             <h2>PPDB 2020</h2>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button  class="logout-btn"><i class="fa fa-sign-out"></i> Logout</button>
+            </form>
         </div>
     </header>
     <main>
@@ -30,12 +34,6 @@
             <ul>
                 <li><a href="{{ url('/home') }}" class="{{ request()->is('home') ? 'active' : ''}}"><i class="fa fa-dashboard"></i> Statistik</a></li>
                 <li><a href="{{ route('fetchData') }}" class="{{ request()->is('fetchData') ? 'active' : ''}}"><i class="fa fa-table"></i> Data Pendaftar</a></li>
-                <li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button><i class="fa fa-sign-out"></i> Logout</button>
-                    </form>
-                </li>
         </nav>
             </ul>
         @yield('Main-Content')
