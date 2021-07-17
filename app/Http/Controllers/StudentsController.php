@@ -139,6 +139,7 @@ class StudentsController extends Controller
         // Go to registration form
         // Get last id registrant
         $last = DB::table('students')->orderBy('id', 'desc')->first();
+        $last = $last->id;
         return view('student.daftar', compact('last'));
     }
 

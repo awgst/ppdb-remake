@@ -58,4 +58,59 @@ class HomeController extends Controller
         $data->toJson();
         return $data;
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Student  $student
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Student $student)
+    {
+        // return edit view
+        return view('admin.edit', compact('student'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Student  $student
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Student $student)
+    {
+        // Store Edited Data to DB
+        $request->validate([
+            'name' => 'required',
+            'nisn' => 'required|size:10',
+            'asal_sekolah' => 'required',
+            'tempat_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+            'nama_wali' => 'required',
+            'alamat_wali' => 'required',
+            'jarak' => 'required',
+            'path' => 'required',
+        ], $this->messages());
+        Student::where('id', $student->id)->update($request->except(['_method','_token']));
+        return redirect(url('fetchData'))->with('status', 'Berhasil');
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    private function messages()
+    {
+        return [
+            'required' => 'Harap isi bidang ini',
+            'unique' => ':attribute telah terdaftar',
+            'size' => 'jumlah :attribute harus 10 karakter'
+        ];
+    }
+
 }

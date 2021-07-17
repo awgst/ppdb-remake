@@ -40,48 +40,48 @@
     </style>
 @endsection
 @section('custom-script')
+    @if (session('status'))
+        <script>
+            alert('Data Berhasil diubah!');
+        </script>
+    @endif
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
-            setInterval(function(){
-                $.ajax({
-                    type: "GET",
-                    url: "/loadData",
-                    dataType: "json",
-                    success: function (response) {
-                        $(".odd").remove();
-                        $.each(response, function (index, item) { 
-                            $('tbody').html('<tr>\
-                                <td>'+(index+1)+'</td>\
-                                <td>PDB/20/'+item.id+'</td>\
-                                <td>'+item.name+'</td>\
-                                <td>'+item.nisn+'</td>\
-                                <td>'+item.tempat_lahir+', '+item.tgl_lahir+'</td>\
-                                <td>'+item.jenis_kelamin+'</td>\
-                                <td>'+item.agama+'</td>\
-                                <td>'+item.alamat+'</td>\
-                                <td>'+item.nama_wali+'</td>\
-                                <td>'+item.alamat_wali+'</td>\
-                                <td>'+item.jarak+'</td>\
-                                <td><img src="'+item.path+'" class="img-prev"></td>\
-                                <td>\
-                                    <div style="display: flex;">\
-                                        <form action="" method="POST" style="margin-right:15px;">\
-                                            @method("put")\
-                                            <button class="btn" style="background-color: greenyellow">Edit</button>\
-                                        </form>\
-                                        <form action="" method="POST">\
-                                            @method("delete")\
-                                            <button class="btn" style="background-color: red">Delete</button>\
-                                        </form>\
-                                    </div>\
-                                </td>\
-                            </tr>');    
-                        });
-                        
-                    }
-                });
-            }, 1000);
+            $.ajax({
+                type: "GET",
+                url: "/loadData",
+                dataType: "json",
+                success: function (response) {
+                    $(".odd").remove();
+                    $.each(response, function (index, item) { 
+                        $('tbody').append('<tr>\
+                            <td>'+(index+1)+'</td>\
+                            <td>PDB/20/'+item.id+'</td>\
+                            <td>'+item.name+'</td>\
+                            <td>'+item.nisn+'</td>\
+                            <td>'+item.tempat_lahir+', '+item.tgl_lahir+'</td>\
+                            <td>'+item.jenis_kelamin+'</td>\
+                            <td>'+item.agama+'</td>\
+                            <td>'+item.alamat+'</td>\
+                            <td>'+item.nama_wali+'</td>\
+                            <td>'+item.alamat_wali+'</td>\
+                            <td>'+item.jarak+'</td>\
+                            <td><img src="'+item.path+'" class="img-prev"></td>\
+                            <td>\
+                                <div style="display: flex;">\
+                                    <a href="/edit/'+item.id+'" style="margin-right:15px; background-color: greenyellow;" class="btn">Edit</a>\
+                                    <form action="" method="POST">\
+                                        @method("delete")\
+                                        <button class="btn" style="background-color: red">Delete</button>\
+                                    </form>\
+                                </div>\
+                            </td>\
+                        </tr>');    
+                    });
+                    
+                }
+            });
         });
     </script>
 @endsection

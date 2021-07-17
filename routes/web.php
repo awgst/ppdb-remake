@@ -28,6 +28,8 @@ Auth::routes();
 // Admin page routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/fetchData', 'HomeController@fetchData')->name('fetchData');
+Route::get('/edit/{student}', 'HomeController@edit');
+Route::put('/{student}', 'HomeController@update');
 // Load ajax
 Route::get('/loadData', 'HomeController@loadData');
 Route::get('/loadStats', 'HomeController@loadStats');

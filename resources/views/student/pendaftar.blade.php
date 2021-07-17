@@ -50,15 +50,14 @@
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
-            setInterval(function (){
-                $.ajax({
+            $.ajax({
                 type: "GET",
                 url: "/student/loadRegistrant",
                 dataType: "json",
                 success: function (response) {
                     $(".odd").remove();
                     $.each(response, function (index, item) { 
-                         $("tbody").html('<tr>\
+                         $("tbody").append('<tr>\
                             <td>'+(index+1)+'</td>\
                             <td style="min-width: 200px;">'+item.name+'</td>\
                             <td style="min-width: 150px;">'+item.nisn+'</td>\
@@ -68,7 +67,6 @@
                     });
                 }
             });
-            }, 1000);
             
         });
     </script>
