@@ -18,7 +18,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td style="display:flex;">
-                                    <a href="" class="btn btn-success">Edit</a>
+                                    <a href={{ url('/users/edit/'.$user->id) }} class="btn btn-success">Edit</a>
                                     <form action="" method="post">
                                         @method('delete')
                                         @csrf
