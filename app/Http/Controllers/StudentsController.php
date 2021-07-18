@@ -96,34 +96,44 @@ class StudentsController extends Controller
         $pdf->SetFont('Arial','',11);
         $pdf->Cell(35,10,'Nomor Registrasi');
         $pdf->Cell(10,10,':',0,0,'R');
-        $pdf->Cell(105,10,'PDB/20/1',1,1,'L');
+        $pdf->Cell(105,10,'PDB/20/'.$student->id,1,1,'L');
         $pdf->SetX(35);
         $pdf->Cell(35,10,'NAMA');
         $pdf->Cell(10,10,':',0,0,'R');
-        $pdf->Cell(100,10,'Awang Suria Trisakti',0,1,'L');
+        $pdf->Cell(100,10,$student->name,0,1,'L');
         $pdf->SetX(35);
         $pdf->Cell(35,10,'NISN');
         $pdf->Cell(10,10,':',0,0,'R');
-        $pdf->Cell(100,10,'1234567890',0,1,'L');
+        $pdf->Cell(100,10,$student->nisn,0,1,'L');
+        $pdf->SetX(35);
+        $pdf->Cell(35,10,'Jenis Kelamin');
+        $pdf->Cell(10,10,':',0,0,'R');
+        $pdf->Cell(100,10,$student->jenis_kelamin,0,1,'L');
+        $pdf->SetX(35);
+        $pdf->Cell(35,10,'Tempat/Tgl Lahir');
+        $pdf->Cell(10,10,':',0,0,'R');
+        $pdf->Cell(100,10,$student->tempat_lahir.', '.date_format(date_create($student->tgl_lahir),"d M Y"),0,1,'L');
         $pdf->SetX(35);
         $pdf->Cell(35,10,'Sekolah Asal');
         $pdf->Cell(10,10,':',0,0,'R');
-        $pdf->Cell(100,10,'SD N 1 Tlogotirto',0,1,'L');
+        $pdf->Cell(100,10,$student->asal_sekolah,0,1,'L');
         $pdf->SetX(35);
         $pdf->Cell(35,10,'Alamat');
         $pdf->Cell(10,10,':',0,0,'R');
-        $pdf->MultiCell(100,10,'Jembar',0,'L',0);
+        $pdf->MultiCell(100,10,$student->alamat,0,'L',0);
         $pdf->SetY(205);
 
         $pdf->SetFont('Arial','',11);
-        $path = public_path('foto/1584959903212.jpg');
-        $pdf->Image($path,40,150,35,45);
+        $path = public_path($student->path);
+        // Image format
+        // Image(path_to_image, X, Y, width, height)
+        $pdf->Image($path,40,160,35,45);
 
         $pdf->Cell(95,10,'Calon Peserta',0,0,'C');
         $pdf->Cell(95,10,'Panitia',0,1,'C');
         $pdf->Cell(95,20,'',0,0,'C');
         $pdf->Cell(95,20,'',0,1,'C');
-        $pdf->Cell(95,10,'Awang Suria Trisakti',0,0,'C');
+        $pdf->Cell(95,10,$student->name,0,0,'C');
         $pdf->Cell(95,10,'..................',0,1,'C');
 
         // Print file
