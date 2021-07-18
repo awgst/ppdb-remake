@@ -30,7 +30,7 @@
                     </tbody>
                 </table>
                 <div class="float-right">
-                    <a href="" class="btn btn-primary">Tambah Admin</a>
+                    <a href="{{ url('/register') }}" class="btn btn-primary">Tambah Admin</a>
                 </div>
             </div>
         </div>

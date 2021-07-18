@@ -47,7 +47,6 @@
     @endif
     <script>
         $(document).ready(function () {
-            $('#dataTable').DataTable();
             $.ajax({
                 type: "GET",
                 url: "/loadData",
@@ -79,7 +78,7 @@
                             </td>\
                         </tr>');    
                     });
-                    
+                    $('#dataTable').DataTable();
                 }
             });
         });
