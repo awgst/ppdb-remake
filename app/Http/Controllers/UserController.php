@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         // Show admin mangement view
         $users = DB::table('users')->where('level', 'admin')->get();
-        return view('admin.manage', compact('users'));
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -59,7 +59,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Show edit form
+
     }
 
     /**
