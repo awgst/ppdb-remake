@@ -13,31 +13,37 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td style="display:flex;">
-                                    <a href={{ url('/users/edit/'.$user->id) }} class="btn btn-success">Edit</a>
-                                    <form action="" method="post">
-                                        @method('delete')
-                                        @csrf
-                                        <button class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td style="display:flex;">
+                                <a href={{ url('/users/edit/'.$user->id) }} class="btn btn-success">Edit</a>
+                                <form action="" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <div class="float-right">
+                    <a href="" class="btn btn-primary">Tambah Admin</a>
+                </div>
             </div>
         </div>
     </div>
-@endsection
-@section('custom-style')
+    @endsection
+    @section('custom-style')
     <style>
-        .dataTables_filter, .dataTables_paginate{
+        .dataTables_filter, .dataTables_paginate, .float-right{
             display: flex;
             flex-direction: row-reverse;
+        }
+        .btn-primary{
+            color: #fff;
         }
         .btn{
             margin: 0 10px;
