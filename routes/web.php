@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,11 +26,18 @@ Route::post('/student/findStudent', [StudentsController::class, 'findStudent']);
 
 // Auth Routes
 Auth::routes();
-// Admin page routes
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/fetchData', 'HomeController@fetchData')->name('fetchData');
-Route::get('/edit/{student}', 'HomeController@edit');
-Route::put('/{student}', 'HomeController@update');
-// Load ajax
-Route::get('/loadData', 'HomeController@loadData');
-Route::get('/loadStats', 'HomeController@loadStats');
+
+// Check User Level
+Route::middleware(['auth', 'userlevelcheck:super_admin'])->group(function () {
+    Route::get('/users', 'UserController@index');
+});
+Route::middleware(['auth', 'userlevelcheck:admin,super_admin'])->group(function () {
+    // Admin page routes
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/fetchData', 'HomeController@fetchData')->name('fetchData');
+    Route::get('/edit/{student}', 'HomeController@edit');
+    Route::put('/{student}', 'HomeController@update');
+    // Load ajax
+    Route::get('/loadData', 'HomeController@loadData');
+    Route::get('/loadStats', 'HomeController@loadStats');
+});

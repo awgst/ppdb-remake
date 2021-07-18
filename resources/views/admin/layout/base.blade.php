@@ -34,6 +34,9 @@
             <ul>
                 <li><a href="{{ url('/home') }}" class="{{ request()->is('home') ? 'active' : ''}}"><i class="fa fa-dashboard"></i> Statistik</a></li>
                 <li><a href="{{ route('fetchData') }}" class="{{ request()->is('fetchData') ? 'active' : ''}}"><i class="fa fa-table"></i> Data Pendaftar</a></li>
+                @if (auth()->user()->level=="super_admin")
+                    <li><a href="{{ url('/users') }}" class="{{ request()->is('manage') ? 'active' : ''}}"><i class="fa fa-users"></i> Kelola Admin</a></li>
+                @endif
         </nav>
             </ul>
         @yield('Main-Content')
