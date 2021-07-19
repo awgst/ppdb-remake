@@ -38,6 +38,7 @@ Route::middleware(['auth', 'userlevelcheck:admin,super_admin'])->group(function 
     Route::get('/fetchData', 'HomeController@fetchData')->name('fetchData');
     Route::get('/edit/{student}', 'HomeController@edit');
     Route::put('/{student}', 'HomeController@update');
+    Route::delete('/{student}', 'HomeController@destroy');
     // Load ajax
     Route::get('/loadData', 'HomeController@loadData');
     Route::get('/loadStats', 'HomeController@loadStats');

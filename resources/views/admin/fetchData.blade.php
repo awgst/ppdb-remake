@@ -74,8 +74,9 @@
                             <td>\
                                 <div style="display: flex;">\
                                     <a href="/edit/'+item.id+'" style="margin-right:15px; background-color: greenyellow;" class="btn">Edit</a>\
-                                    <form action="" method="POST">\
+                                    <form action="/'+item.id+'" method="POST">\
                                         @method("delete")\
+                                        @csrf\
                                         <button class="btn" style="background-color: red">Delete</button>\
                                     </form>\
                                 </div>\
