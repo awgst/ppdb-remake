@@ -102,7 +102,8 @@ class UserController extends Controller
     /**
      * Restore soft deleted data
      */
-    public function restore(Student $student){
-
+    public function restore(Request $request){
+        Student::withTrashed()->where('id', $request->id)->restore();
+        return redirect('users/deleted')->with('restored', 'succeed');
     }
 }

@@ -35,7 +35,12 @@
                                 <td>{{ $student->alamat_wali }}</td>
                                 <td>{{ $student->jarak }}</td>
                                 <td><img src="{{ asset($student->path) }}" style="width: 100px;height:100px;"></td>
-                                <td><form action="/users/restore" method="post"><button class="btn btn-primary">Restore</button></form></td>
+                                <td><form action="{{ url('users/restore/') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $student->id }}">
+                                    <button class="btn btn-primary">Restore</button>
+                                </form>
+                            </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -53,6 +58,9 @@
     </style>
 @endsection
 @section('custom-script')
+@if (session('restored'))
+    <script>alert('Data berhasil dikembalikan!');</script>
+@endif
 <script>
     $(document).ready(function () {
         $('#dataTable').DataTable();
