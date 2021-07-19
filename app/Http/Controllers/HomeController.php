@@ -48,8 +48,8 @@ class HomeController extends Controller
      */
     public function loadStats(){
         $total = count(Student::all());
-        $boy = count(DB::table('students')->where('jenis_kelamin','=','Laki-laki')->get());
-        $girl = count(DB::table('students')->where('jenis_kelamin','=','Perempuan')->get());
+        $boy = count(Student::where('jenis_kelamin', 'Laki-laki')->get());
+        $girl = count(Student::where('jenis_kelamin', 'Perempuan')->get());
         $data = collect([
             'total'=>$total,
             'boy'=>$boy,
