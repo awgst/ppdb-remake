@@ -55,6 +55,8 @@
         <script>alert('Data berhasil dihapus!');</script>
     @elseif (session('updated'))
         <script>alert('Data berhasil diupdate!');</script>
+    @elseif (session('added'))
+        <script>alert('Berhasil menambahkan Admin!');</script>
     @endif
     <script>
         $(document).ready(function () {
