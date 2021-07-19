@@ -100,6 +100,20 @@ class HomeController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Student  $student
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Student $student)
+    {
+        // Delete student record
+        $student = Student::find($student->id);
+        $student->delete();
+        return redirect('fetchData')->with('deleted', 'Berhasil');
+    }
+
+    /**
      * Get the error messages for the defined validation rules.
      *
      * @return array

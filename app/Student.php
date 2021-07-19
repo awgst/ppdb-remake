@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    // Soft Delete
+    use SoftDeletes;
     // Mass Assignment
     protected $fillable = [
         'name', 
