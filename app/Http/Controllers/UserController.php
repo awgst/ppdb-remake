@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -87,7 +88,21 @@ class UserController extends Controller
     {
         // Delete account permanently
         $users = User::find($user->id);
-        $user->delete();
+        $users->delete();
         return redirect('users')->with('deleted', 'succeed');
+    }
+
+    /**
+     * Show soft deleted data by admin
+     */
+    public function deleted(){
+        $students = Student::onlyTrashed()->get();
+        return view('user/deleted', compact('students'));
+    }
+    /**
+     * Restore soft deleted data
+     */
+    public function restore(Student $student){
+
     }
 }

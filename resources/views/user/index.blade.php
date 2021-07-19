@@ -19,7 +19,7 @@
                             <td>{{ $user->email }}</td>
                             <td style="display:flex;">
                                 <a href={{ url('/users/edit/'.$user->id) }} class="btn btn-success">Edit</a>
-                                <form action="/{{ $user->id }}" method="post">
+                                <form action="users/{{ $user->id }}" method="post">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger">Delete</button>

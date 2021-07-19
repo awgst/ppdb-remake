@@ -31,8 +31,10 @@ Auth::routes();
 Route::middleware(['auth', 'userlevelcheck:super_admin'])->group(function () {
     Route::get('/users', 'UserController@index');
     Route::get('/users/edit/{user}', 'UserController@edit');
-    Route::put('/{user}', 'UserController@update');
-    Route::delete('/{user}', 'UserController@destroy');
+    Route::get('/users/deleted', 'UserController@deleted');
+    Route::put('/users/{user}', 'UserController@update');
+    Route::delete('/users/{user}', 'UserController@destroy');
+    Route::post('/users/restore', 'UserController@restore');
 });
 Route::middleware(['auth', 'userlevelcheck:admin,super_admin'])->group(function () {
     // Admin page routes

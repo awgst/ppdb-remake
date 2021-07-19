@@ -36,6 +36,7 @@
                 <li><a href="{{ route('fetchData') }}" class="{{ request()->is('fetchData') ? 'active' : ''}}"><i class="fa fa-table"></i> Data Pendaftar</a></li>
                 @if (auth()->user()->level=="super_admin")
                     <li><a href="{{ url('/users') }}" class="{{ request()->is('users') ? 'active' : ''}}"><i class="fa fa-users"></i> Kelola Admin</a></li>
+                    <li><a href="{{ url('/users/deleted') }}" class="{{ request()->is('users/deleted') ? 'active' : ''}}"><i class="fa fa-close"></i> Data Terhapus</a></li>
                 @endif
         </nav>
             </ul>

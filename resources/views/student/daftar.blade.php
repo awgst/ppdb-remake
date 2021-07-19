@@ -11,7 +11,7 @@
 			@csrf
 			<div class="form-control">
 				<h3>Nomor Registrasi</h3>
-				<input type="text" name="noreg" disabled class="form" value="PDB/20/{{ $last>0 ? $last+1:"1"}}">
+				<input type="text" name="noreg" disabled class="form" value="PDB/20/{{ $last>0 ? $last:'1'}}">
 			</div>
 			<div class="form-control">
 				<h3>Nama Lengkap</h3>

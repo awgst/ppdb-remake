@@ -150,8 +150,8 @@ class StudentsController extends Controller
     {
         // Go to registration form
         // Get last id registrant
-        $last = DB::table('students')->orderBy('id', 'desc')->first();
-        $last = $last->id;
+        $last = DB::select("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'ppdb' AND   TABLE_NAME   = 'students';", [0]);
+        $last = $last[0]->AUTO_INCREMENT;
         return view('student.daftar', compact('last'));
     }
 
