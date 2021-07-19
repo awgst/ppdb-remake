@@ -19,7 +19,7 @@
                             <td>{{ $user->email }}</td>
                             <td style="display:flex;">
                                 <a href={{ url('/users/edit/'.$user->id) }} class="btn btn-success">Edit</a>
-                                <form action="" method="post">
+                                <form action="/{{ $user->id }}" method="post">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger">Delete</button>
@@ -51,6 +51,11 @@
     </style>
 @endsection
 @section('custom-script')
+    @if (session('deleted'))
+        <script>alert('Data berhasil dihapus!');</script>
+    @elseif (session('updated'))
+        <script>alert('Data berhasil diupdate!');</script>
+    @endif
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();

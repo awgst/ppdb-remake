@@ -70,9 +70,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        // Store update user data
+        User::where('id', $user->id)->update($request->except(['_method', '_token']));
+        return redirect('/users')->with('updated', 'succeed');
     }
 
     /**
@@ -81,8 +83,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        // Delete account permanently
+        $users = User::find($user->id);
+        $user->delete();
+        return redirect('users')->with('deleted', 'succeed');
     }
 }

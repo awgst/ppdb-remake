@@ -12,7 +12,7 @@
                             <div class="card-header">{{ __('Edit') }}</div>
             
                             <div class="card-body">
-                                <form method="POST" action="{{ route('register') }}">
+                                <form method="POST" action="/{{ $user->id }}">
                                     @method('put')
                                     @csrf
             
