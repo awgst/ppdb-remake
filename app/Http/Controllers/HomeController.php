@@ -98,6 +98,19 @@ class HomeController extends Controller
         Student::where('id', $student->id)->update($request->except(['_method','_token']));
         return redirect(url('fetchData'))->with('status', 'Berhasil');
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Student  $student
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Student $student)
+    {
+        // Deletes with soft deletes
+        $students = Student::find($student->id);
+        $students->delete();
+        return redirect('fetchData')->with('deleted', 'succeed');
+    }
 
     /**
      * Get the error messages for the defined validation rules.

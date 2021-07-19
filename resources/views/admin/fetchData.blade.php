@@ -44,6 +44,10 @@
         <script>
             alert('Data Berhasil diubah!');
         </script>
+    @elseif (session('deleted'))
+        <script>
+            alert('Data Berhasil dihapus!');
+        </script>
     @endif
     <script>
         $(document).ready(function () {
