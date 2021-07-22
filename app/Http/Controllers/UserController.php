@@ -106,4 +106,14 @@ class UserController extends Controller
         Student::withTrashed()->where('id', $request->id)->restore();
         return redirect('users/deleted')->with('restored', 'succeed');
     }
+    /**
+     * Permanently Delete
+     * 
+     * @param  Student  $student
+     * @return \Illuminate\Http\Response
+     */
+    public function permanentDelete(Request $request){
+        Student::withTrashed()->where('id', $request->id)->forceDelete();
+        return redirect('users/deleted')->with('forceDeleted', 'succeed');
+    }
 }

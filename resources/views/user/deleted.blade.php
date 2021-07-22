@@ -4,7 +4,7 @@
         <h1 class="page-header">Data Siswa Terhapus</h1>
         <div class="wraper">
             <div class="responsive">
-                <table id="dataTable" class="table table-hover">
+                <table id="dataTable" class="table">
                     <thead>
                         <th>No</th>
                         <th>No Registrasi</th>
@@ -35,12 +35,17 @@
                                 <td>{{ $student->alamat_wali }}</td>
                                 <td>{{ $student->jarak }}</td>
                                 <td><img src="{{ asset($student->path) }}" style="width: 100px;height:100px;"></td>
-                                <td><form action="{{ url('users/restore/') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $student->id }}">
-                                    <button class="btn btn-primary">Restore</button>
-                                </form>
-                            </td>
+                                <td style="display: flex;"><form action="{{ url('users/restore/') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $student->id }}">
+                                        <button class="btn btn-primary">Restore</button>
+                                    </form>
+                                    <form onSubmit="return confirm('Data akan dihapus dan tidak dapat dikembalikan, anda yakin?');" action="{{ url('users/permanentDelete') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $student->id }}">
+                                        <button class="btn btn-danger mx-3">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -60,6 +65,8 @@
 @section('custom-script')
 @if (session('restored'))
     <script>alert('Data berhasil dikembalikan!');</script>
+@elseif (session('forceDeleted'))
+    <script>alert('Data berhasil dihapus secara permanent!');</script>
 @endif
 <script>
     $(document).ready(function () {
