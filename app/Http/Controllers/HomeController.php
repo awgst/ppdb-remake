@@ -155,5 +155,5 @@ class HomeController extends Controller
         User::where('id', $id)->update(['password'=>Hash::make($request->password)]);
         return redirect('/home')->with('reseted', 'succeed');
     }
-
+    
 }
