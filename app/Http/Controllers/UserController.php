@@ -5,6 +5,7 @@ use App\User;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -74,7 +75,22 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         // Store update user data
-        User::where('id', $user->id)->update($request->except(['_method', '_token']));
+        $rule = [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ];
+        $request->validate($rule,[
+            'required'=>'Harap isi bidang ini',
+            'confirmed'=>':attribute yang dimasukkan tidak sama',
+            'min'=>'Panjang :attribute minimal 8 karakter',
+        ]);
+        $request = [
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password),
+        ];
+        User::where('id', $user->id)->update($request);
         return redirect('/users')->with('updated', 'succeed');
     }
 
