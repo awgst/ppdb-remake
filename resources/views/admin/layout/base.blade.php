@@ -38,6 +38,7 @@
                     <li><a href="{{ url('/users') }}" class="{{ request()->is('users') ? 'active' : ''}}"><i class="fa fa-users"></i> Kelola Admin</a></li>
                     <li><a href="{{ url('/users/deleted') }}" class="{{ request()->is('users/deleted') ? 'active' : ''}}"><i class="fa fa-close"></i> Data Terhapus</a></li>
                 @endif
+                <li><a href="{{ url('/users/reset')}}" class="{{ request()->is('users/reset') ? 'active' : ''}}"><i class="fa fa-user"></i> Ganti Password</a></li>
         </nav>
             </ul>
         @yield('Main-Content')

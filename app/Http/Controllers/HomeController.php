@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\StudentController;
 
 class HomeController extends Controller
@@ -122,8 +124,36 @@ class HomeController extends Controller
         return [
             'required' => 'Harap isi bidang ini',
             'unique' => ':attribute telah terdaftar',
-            'size' => 'jumlah :attribute harus 10 karakter'
+            'size' => 'jumlah :attribute harus 10 karakter',
+            'confirmed'=> ':attribute yang dimasukkan tidak sama.',
+            'min'=> 'Panjang :attribute minimal 8 karakter.',
+            'string'=> 'Gunakan kombinasi huruf, angka dan tanda baca.',
         ];
+    }
+
+    /**
+     * This is a custom reset password
+     */
+    public function reset(){
+        // Show reset view
+        return view('auth.passwords.forgot');
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePass(Request $request)
+    {
+        // Store the updated password to database
+        $id = $request->user()->id;
+        $request->validate([
+            'password'=>'min:8|required|string|confirmed',
+        ], $this->messages());
+        User::where('id', $id)->update(['password'=>Hash::make($request->password)]);
+        return redirect('/home')->with('reseted', 'succeed');
     }
 
 }

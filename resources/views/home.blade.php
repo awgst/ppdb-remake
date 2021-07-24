@@ -61,6 +61,11 @@
 </div>
 @endsection
 @section('custom-script')
+    @if (session('reseted'))
+        <script>
+            alert('Password berhasil di reset!');
+        </script>
+    @endif
     <script>
        $(document).ready(function () {
            setInterval(function(){
