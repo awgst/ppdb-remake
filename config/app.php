@@ -177,6 +177,8 @@ return [
 
         // Add fpdf-laravel from github.com/crabbly
         Crabbly\Fpdf\FpdfServiceProvider::class,
+        // Add Laravel-Excel from github.com/maatwebsite
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -228,6 +230,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // Add a Facades for Laravel-Excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
