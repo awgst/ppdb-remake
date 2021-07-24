@@ -27,12 +27,22 @@
                     
                 </tbody>
             </table>
+            <div class="clearfix">
+                <a href="{{ url('export') }}" class="btn btn-primary float-right">Simpan ke Excel</a>
+            </div>
         </div>
     </div>
 </div>
 @endsection
 @section('custom-style')
     <style>
+        .clearfix{
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        .btn{
+            color: #fff;
+        }
         .dataTables_filter, .dataTables_paginate{
             display: flex;
             flex-direction: row-reverse;

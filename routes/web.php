@@ -43,6 +43,7 @@ Route::middleware(['auth', 'userlevelcheck:admin,super_admin'])->group(function 
     Route::get('/fetchData', 'HomeController@fetchData')->name('fetchData');
     Route::get('/edit/{student}', 'HomeController@edit');
     Route::get('users/reset', 'HomeController@reset');
+    Route::get('/export', 'HomeController@export');
     Route::post('users/reset', 'HomeController@updatePass');
     Route::put('/{student}', 'HomeController@update');
     Route::delete('/{student}', 'HomeController@destroy');

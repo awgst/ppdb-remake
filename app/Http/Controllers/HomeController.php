@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Student;
 use App\User;
+use App\Exports\ExcelExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\StudentController;
 
 class HomeController extends Controller
@@ -156,4 +158,10 @@ class HomeController extends Controller
         return redirect('/home')->with('reseted', 'succeed');
     }
     
+    /**
+     * Export function to export students table into excel
+     */
+    public function export(){
+        return Excel::download(new ExcelExport, 'Daftar-Peserta Didik_'.date('d-m-Y').'.xlsx');
+    }
 }
