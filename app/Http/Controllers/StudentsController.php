@@ -75,13 +75,13 @@ class StudentsController extends Controller
     }
     /**
      * Print using fpdf
-     * 
+     *
      */
     public function print(Student $student){
         //create pdf document
         $pdf = app('Fpdf');
         $pdf->AddPage();
-        
+
         $pdf->Image(public_path('images/header.png') ,10,10);
         // setting used font
         $pdf->SetY(60);
@@ -150,7 +150,7 @@ class StudentsController extends Controller
     {
         // Go to registration form
         // Get last id registrant
-        $last = DB::select("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'ppdb' AND   TABLE_NAME   = 'students';", [0]);
+        $last = DB::select("SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'ppdb' AND   TABLE_NAME   = 'students';");
         $last = $last[0]->AUTO_INCREMENT;
         return view('student.daftar', compact('last'));
     }
